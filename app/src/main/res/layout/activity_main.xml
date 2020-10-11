@@ -18,7 +18,10 @@
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:tabTextAppearance="@style/tab_text_size">
+            app:tabTextAppearance="@style/tab_text_size"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorHeight="4dp"
+            app:tabIndicatorGravity="top">
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
