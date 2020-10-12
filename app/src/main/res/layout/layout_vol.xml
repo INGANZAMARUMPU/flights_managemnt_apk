@@ -20,6 +20,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/lbl_card_vol_source"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="1"
@@ -27,6 +28,7 @@
                         android:textSize="12pt"
                         android:textStyle="bold" />
                     <TextView
+                        android:id="@+id/lbl_card_vol_depart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="1"
@@ -48,6 +50,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/lbl_card_vol_destination"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="1"
@@ -55,6 +58,7 @@
                         android:textSize="12pt"
                         android:textStyle="bold" />
                     <TextView
+                        android:id="@+id/lbl_card_vol_arrivee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="1"
@@ -76,10 +80,11 @@
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"/>
                 <TextView
+                    android:id="@+id/lbl_card_vol_compagnie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lines="1"
-                    android:text="Ethiopian"
+                    android:text="Ethiopian Airways"
                     android:textSize="8pt"
                     android:textStyle="bold"
                     android:textColor="#272"/>
