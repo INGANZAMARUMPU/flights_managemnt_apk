@@ -9,7 +9,7 @@
         android:text="Passager"
         android:textAlignment="center"
         android:textColor="#272"
-        android:textFontWeight="bold"
+        android:textStyle="bold"
         android:textSize="12pt"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:text="supprimer"
             android:textColor="#900"
-            android:visibility="gone"
+            android:visibility="invisible"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
         <LinearLayout
             android:layout_width="0dp"

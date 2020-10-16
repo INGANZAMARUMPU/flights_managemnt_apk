@@ -1,7 +1,7 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Models;
 
 public class Passager {
-    String id, nom, prenom, vol, depart, arrivee, user;
+    public String id, nom, prenom, vol, depart, arrivee, user;
 
     public Passager(String id, String nom, String prenom, String vol, String depart, String arrivee, String user) {
         this.id = id;

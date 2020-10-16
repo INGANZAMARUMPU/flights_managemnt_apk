@@ -1,7 +1,7 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Models;
 
 public class Vol {
-    String id, source, destination, avion, compagnie, depart, arrivee;
+    public String id, source, destination, avion, compagnie, depart, arrivee;
 
     public Vol(String id, String source, String destination, String avion, String compagnie, String depart, String arrivee) {
         this.id = id;

@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="supprimer"
             android:textColor="#900"
-            android:visibility="gone"
+            android:visibility="invisible"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
         <LinearLayout
             android:layout_width="0dp"

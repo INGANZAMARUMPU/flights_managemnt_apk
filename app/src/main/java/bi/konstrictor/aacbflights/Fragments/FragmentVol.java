@@ -1,4 +1,4 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Fragments;
 
 import android.os.Bundle;
 
@@ -8,14 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentEntrant extends Fragment {
+import bi.konstrictor.aacbflights.R;
 
-    public FragmentEntrant() {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FragmentVol extends Fragment {
+
+    public FragmentVol() {
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_entrant, container, false);
+        View view = inflater.inflate(R.layout.fragment_sortant, container, false);;
         return view;
     }
 }

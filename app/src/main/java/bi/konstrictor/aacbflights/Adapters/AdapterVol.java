@@ -1,4 +1,4 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.R;
+import bi.konstrictor.aacbflights.Models.Vol;
 
 public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
     ArrayList<Vol> vols;
