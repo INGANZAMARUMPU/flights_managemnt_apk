@@ -9,11 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
@@ -26,12 +30,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="entrant"
-                android:icon="@drawable/ic_vol_entrant"/>
+                android:icon="@drawable/ic_reservation"/>
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sortant"
-                android:icon="@drawable/ic_vol_sortant"/>
+                android:icon="@drawable/ic_vol"/>
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

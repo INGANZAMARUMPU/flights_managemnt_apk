@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class FragmentStatePA extends FragmentStatePagerAdapter {
 
-    private String[] titles = new String[] {"ENTRANTS", "SORTANTS", "PASSAGERS"};
+    private String[] titles = new String[] {"RESERVATIONS", "VOLS", "PASSAGERS"};
 
     public FragmentStatePA(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

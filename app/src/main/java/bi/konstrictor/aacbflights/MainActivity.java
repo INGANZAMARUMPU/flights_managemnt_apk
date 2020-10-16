@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         main_fspa = new FragmentStatePA(getSupportFragmentManager(), 1);
         tablayout.setupWithViewPager(viewpager);
         viewpager.setAdapter(main_fspa);
-        tablayout.getTabAt(0).setIcon(R.drawable.ic_vol_entrant);
-        tablayout.getTabAt(1).setIcon(R.drawable.ic_vol_sortant);
+        tablayout.getTabAt(0).setIcon(R.drawable.ic_reservation);
+        tablayout.getTabAt(1).setIcon(R.drawable.ic_vol);
         tablayout.getTabAt(2).setIcon(R.drawable.ic_passagers);
     }
 }
