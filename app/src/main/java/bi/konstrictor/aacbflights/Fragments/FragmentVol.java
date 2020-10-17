@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterVol;
 import bi.konstrictor.aacbflights.Host;
+import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.R;
 import okhttp3.Call;
@@ -36,12 +37,14 @@ import okhttp3.Response;
  */
 public class FragmentVol extends Fragment {
 
+    private final MainActivity context;
     private SwipeRefreshLayout swipe_vol_refresh;
     private RecyclerView recycler_vol;
     private ArrayList<Vol> vols;
     private AdapterVol adaptateur;
 
-    public FragmentVol() {
+    public FragmentVol(MainActivity context) {
+        this.context = context;
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,6 +110,7 @@ public class FragmentVol extends Fragment {
                         vols.add(vol);
                     }
                     adaptateur.setVols(vols);
+                    context.vols = vols;
                     adaptateur.notifyDataSetChanged();
 
                 } catch (Exception e) {

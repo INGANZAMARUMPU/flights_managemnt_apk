@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterPassager;
 import bi.konstrictor.aacbflights.Host;
+import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.R;
 import okhttp3.Call;
@@ -36,12 +37,14 @@ import okhttp3.Response;
  */
 public class FragmentPassager extends Fragment {
 
+    private final MainActivity context;
     private SwipeRefreshLayout swipe_passager_refresh;
     private RecyclerView recycler_passager;
     private ArrayList<Passager> passagers;
     private AdapterPassager adaptateur;
 
-    public FragmentPassager() {
+    public FragmentPassager(MainActivity context) {
+        this.context = context;
     }
 
 
@@ -108,6 +111,7 @@ public class FragmentPassager extends Fragment {
                         passagers.add(passager);
                     }
                     adaptateur.setPassagers(passagers);
+                    context.passagers = passagers;
                     adaptateur.notifyDataSetChanged();
 
                 } catch (Exception e) {

@@ -14,9 +14,13 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Models.Passager;
+import bi.konstrictor.aacbflights.Models.Vol;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     FragmentStatePA main_fspa;
     private Menu menu;
     private SharedPreferences sessionPreference;
+    private String group;
+    public ArrayList<Passager> passagers;
+    public ArrayList<Vol> vols;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         tablayout = findViewById(R.id.tablayout);
         viewpager = findViewById(R.id.viewpager);
-        main_fspa = new FragmentStatePA(getSupportFragmentManager(), 1);
+        main_fspa = new FragmentStatePA(getSupportFragmentManager(), 1, this);
         tablayout.setupWithViewPager(viewpager);
         viewpager.setAdapter(main_fspa);
         viewpager.setOffscreenPageLimit(3);
@@ -43,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         sessionPreference = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         String token = sessionPreference.getString("token", "");
+        group = sessionPreference.getString("type", "");
         if(token.trim().isEmpty()){
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu( Menu menu) {
         getMenuInflater().inflate( R.menu.menu_main, menu);
         this.menu = menu;
+        if (group.equalsIgnoreCase("admin") & tablayout.getSelectedTabPosition()==0)
+            menu.findItem(R.id.menu_add).setVisible(true);
         return true;
     }
     @Override

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="PASSAGER"/>
     <Spinner
-        android:id="@+id/spiner_source"
+        android:id="@+id/spinner_res_passager"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:background="@drawable/primary_outline">
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="VOL"/>
     <Spinner
-        android:id="@+id/spiner_destination"
+        android:id="@+id/spinner_res_vol"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:background="@drawable/primary_outline">
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_product_delete"
+            android:id="@+id/btn_res_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="supprimer"
@@ -49,14 +49,14 @@
             android:orientation="horizontal"
             android:gravity="right">
             <Button
-                android:id="@+id/btn_product_cancel"
+                android:id="@+id/btn_res_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ignorer"
                 android:textColor="#777"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
             <Button
-                android:id="@+id/btn_product_submit"
+                android:id="@+id/btn_res_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="valider"

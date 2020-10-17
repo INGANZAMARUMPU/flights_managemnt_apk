@@ -39,12 +39,14 @@ import okhttp3.Response;
 
 public class FragmentReservation extends Fragment {
 
+    private final MainActivity context;
     RecyclerView recycler_reservation;
     SwipeRefreshLayout swipe_reservation_refresh;
     private ArrayList<Reservation> reservations;
     private AdapterReservation adaptateur;
 
-    public FragmentReservation() {
+    public FragmentReservation(MainActivity context) {
+        this.context = context;
     }
 
     @Override

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.R;
 import bi.konstrictor.aacbflights.Models.Vol;
@@ -33,8 +34,8 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
         Vol vol = vols.get(position);
         holder.lbl_card_vol_source.setText(vol.source);
         holder.lbl_card_vol_destination.setText(vol.destination);
-        holder.lbl_card_vol_depart.setText(vol.depart);
-        holder.lbl_card_vol_arrivee.setText(vol.arrivee);
+        holder.lbl_card_vol_depart.setText(Host.getStrDate(vol.depart));
+        holder.lbl_card_vol_arrivee.setText(Host.getStrDate(vol.arrivee));
         holder.lbl_card_vol_compagnie.setText(vol.compagnie);
     }
     @Override

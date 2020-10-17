@@ -12,10 +12,12 @@ import bi.konstrictor.aacbflights.Fragments.FragmentVol;
 
 public class FragmentStatePA extends FragmentStatePagerAdapter {
 
+    private final MainActivity context;
     private String[] titles = new String[] {"RESERVATIONS", "VOLS", "PASSAGERS"};
 
-    public FragmentStatePA(@NonNull FragmentManager fm, int behavior) {
+    public FragmentStatePA(@NonNull FragmentManager fm, int behavior, MainActivity context) {
         super(fm, behavior);
+        this.context = context;
     }
 
     @NonNull
@@ -23,11 +25,11 @@ public class FragmentStatePA extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 1:
-                return new FragmentVol();
+                return new FragmentVol(context);
             case 2:
-                return new FragmentPassager();
+                return new FragmentPassager(context);
             default:
-                return new FragmentReservation();
+                return new FragmentReservation(context);
         }
     }
 

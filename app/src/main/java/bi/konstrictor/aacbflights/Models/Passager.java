@@ -12,4 +12,9 @@ public class Passager {
     public String getFullname(){
         return this.nom+" "+this.prenom;
     }
+
+    @Override
+    public String toString() {
+        return getFullname();
+    }
 }

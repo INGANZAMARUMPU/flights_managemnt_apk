@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.R;
@@ -32,8 +33,8 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Reservation reservation = reservations.get(position);
         holder.lbl_card_res_fullname.setText(reservation.getFullname());
-        holder.lbl_card_res_depart.setText(reservation.depart);
-        holder.lbl_card_res_arrivee.setText(reservation.arrivee);
+        holder.lbl_card_res_depart.setText(Host.getStrDate(reservation.depart));
+        holder.lbl_card_res_arrivee.setText(Host.getStrDate(reservation.arrivee));
         holder.lbl_card_res_vol.setText(reservation.vol);
     }
     @Override

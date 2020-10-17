@@ -12,7 +12,8 @@
         android:id="@+id/menu_add"
         android:icon="@drawable/ic_add"
         android:title="Ajouter"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
     <item
         android:id="@+id/menu_filter"
         android:title="Filtrer"/>
