@@ -64,6 +64,7 @@ public class FragmentReservation extends Fragment {
             @Override
             public void onRefresh() {
                 getResevations();
+                swipe_reservation_refresh.setRefreshing(false);
             }
         });
         getResevations();
@@ -95,6 +96,7 @@ public class FragmentReservation extends Fragment {
                 String json = response.body().string();
                 try {
                     JSONArray json_array = new JSONArray(json);
+                    reservations.clear();
                     for (int i=0; i<json_array.length(); i++){
                         JSONObject json_obj = json_array.getJSONObject(i);
                         Reservation res = new Reservation(
@@ -110,12 +112,6 @@ public class FragmentReservation extends Fragment {
                     }
                     adaptateur.setReservations(reservations);
                     adaptateur.notifyDataSetChanged();
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            swipe_reservation_refresh.setRefreshing(false);
-                        }
-                    });
 
                 } catch (Exception e) {
                     Log.i("==== HOST ====", e.getMessage());

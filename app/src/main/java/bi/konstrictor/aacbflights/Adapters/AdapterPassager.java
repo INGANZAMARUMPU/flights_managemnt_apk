@@ -16,11 +16,9 @@ import bi.konstrictor.aacbflights.R;
 
 public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHolder> {
     ArrayList<Passager> passagers;
-    MainActivity context;
 
-    public AdapterPassager(ArrayList<Passager> passagers, MainActivity context) {
+    public AdapterPassager(ArrayList<Passager> passagers) {
         this.passagers = passagers;
-        this.context = context;
     }
 
     @NonNull
@@ -39,6 +37,10 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
     @Override
     public int getItemCount() {
         return passagers.size();
+    }
+
+    public void setPassagers(ArrayList<Passager> passagers) {
+        this.passagers = passagers;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

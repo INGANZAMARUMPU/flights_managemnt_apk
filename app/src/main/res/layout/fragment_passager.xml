@@ -4,8 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.FragmentPassager">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_passager"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_passager_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_passager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

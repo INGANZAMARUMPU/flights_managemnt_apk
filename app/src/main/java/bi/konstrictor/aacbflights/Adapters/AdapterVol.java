@@ -16,11 +16,9 @@ import bi.konstrictor.aacbflights.Models.Vol;
 
 public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
     ArrayList<Vol> vols;
-    MainActivity context;
 
-    public AdapterVol(ArrayList<Vol> vols, MainActivity context) {
+    public AdapterVol(ArrayList<Vol> vols) {
         this.vols = vols;
-        this.context = context;
     }
 
     @NonNull
@@ -42,6 +40,10 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
     @Override
     public int getItemCount() {
         return vols.size();
+    }
+
+    public void setVols(ArrayList<Vol> vols) {
+        this.vols = vols;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
