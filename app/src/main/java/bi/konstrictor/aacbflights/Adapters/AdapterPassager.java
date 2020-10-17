@@ -34,9 +34,7 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Passager passager = passagers.get(position);
         holder.lbl_card_pass_fullname.setText(passager.getFullname());
-        holder.lbl_card_pass_depart.setText(passager.depart);
-        holder.lbl_card_pass_arrivee.setText(passager.arrivee);
-        holder.lbl_card_pass_vol.setText(passager.vol);
+        holder.lbl_card_pass_serial.setText(passager.code);
     }
     @Override
     public int getItemCount() {
@@ -44,16 +42,14 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView lbl_card_pass_fullname, lbl_card_pass_depart, lbl_card_pass_arrivee, lbl_card_pass_vol;
+        TextView lbl_card_pass_fullname, lbl_card_pass_serial;
         View view;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
             lbl_card_pass_fullname = itemView.findViewById(R.id.lbl_card_pass_fullname);
-            lbl_card_pass_depart = itemView.findViewById(R.id.lbl_card_pass_depart);
-            lbl_card_pass_arrivee = itemView.findViewById(R.id.lbl_card_pass_arrivee);
-            lbl_card_pass_vol = itemView.findViewById(R.id.lbl_card_pass_vol);
+            lbl_card_pass_serial = itemView.findViewById(R.id.lbl_card_pass_serial);
         }
     }
 }

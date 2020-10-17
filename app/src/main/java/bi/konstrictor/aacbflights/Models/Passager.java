@@ -1,16 +1,13 @@
 package bi.konstrictor.aacbflights.Models;
 
 public class Passager {
-    public String id, nom, prenom, vol, depart, arrivee, user;
+    public String id, nom, prenom, code;
 
-    public Passager(String id, String nom, String prenom, String vol, String depart, String arrivee, String user) {
+    public Passager(String id, String nom, String prenom, String code) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.vol = vol;
-        this.depart = depart;
-        this.arrivee = arrivee;
-        this.user = user;
+        this.code = code;
     }
     public String getFullname(){
         return this.nom+" "+this.prenom;

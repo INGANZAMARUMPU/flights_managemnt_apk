@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSortant">
+    tools:context=".Fragments.FragmentVol">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_sortant"
         android:layout_width="match_parent"

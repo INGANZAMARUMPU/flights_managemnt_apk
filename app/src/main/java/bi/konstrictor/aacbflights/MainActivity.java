@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewpager;
     FragmentStatePA main_fspa;
     private Menu menu;
+    private SharedPreferences sessionPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         tablayout.getTabAt(0).setIcon(R.drawable.ic_reservation);
         tablayout.getTabAt(1).setIcon(R.drawable.ic_vol);
         tablayout.getTabAt(2).setIcon(R.drawable.ic_passagers);
+
+        sessionPreference = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        String token = sessionPreference.getString("token", "");
+        if(token.trim().isEmpty()){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
     @Override
     public boolean onCreateOptionsMenu( Menu menu) {
