@@ -15,8 +15,37 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="AVION"/>
+    <Spinner
+        android:id="@+id/spinner_avion"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/primary_outline">
+    </Spinner>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SOURCE"/>
+    <Spinner
+        android:id="@+id/spinner_source"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/primary_outline">
+    </Spinner>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DESTIANTION"/>
+    <Spinner
+        android:id="@+id/spinner_destination"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/primary_outline">
+    </Spinner>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="DATE DE DEPART :"/>
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="90dp"
@@ -57,7 +86,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <DatePicker
                 android:id="@+id/picker_date_arrivee"
                 android:layout_width="wrap_content"
@@ -65,7 +93,6 @@
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
                 tools:targetApi="lollipop" />
-
             <TimePicker
                 android:id="@+id/picker_time_arrivee"
                 android:layout_width="wrap_content"
@@ -75,41 +102,11 @@
                 tools:targetApi="lollipop" />
         </LinearLayout>
     </HorizontalScrollView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AVION"/>
-    <Spinner
-        android:id="@+id/spiner_avion"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@drawable/primary_outline">
-    </Spinner>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SOURCE"/>
-    <Spinner
-        android:id="@+id/spiner_source"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@drawable/primary_outline">
-    </Spinner>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DESTIANTION"/>
-    <Spinner
-        android:id="@+id/spiner_destination"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:background="@drawable/primary_outline">
-    </Spinner>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btn_product_delete"
+            android:id="@+id/btn_vol_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="supprimer"
@@ -123,14 +120,14 @@
             android:orientation="horizontal"
             android:gravity="right">
             <Button
-                android:id="@+id/btn_product_cancel"
+                android:id="@+id/btn_vol_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ignorer"
                 android:textColor="#777"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
             <Button
-                android:id="@+id/btn_product_submit"
+                android:id="@+id/btn_vol_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="valider"

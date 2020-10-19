@@ -75,7 +75,6 @@ public class FragmentPassager extends Fragment {
     }
 
     private void getResevations() {
-
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/user/").newBuilder();
 

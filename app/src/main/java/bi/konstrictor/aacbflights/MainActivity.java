@@ -1,26 +1,38 @@
 package bi.konstrictor.aacbflights;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Models.Aeroport;
+import bi.konstrictor.aacbflights.Models.Avion;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.Models.Vol;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
     private Menu menu;
     private SharedPreferences sessionPreference;
     private String group;
-    public ArrayList<Passager> passagers;
-    public ArrayList<Vol> vols;
+    public ArrayList<Passager> passagers = new ArrayList<>();
+    public ArrayList<Vol> vols = new ArrayList<>();
+    public ArrayList<Avion> avions = new ArrayList<>();
+    public ArrayList<Aeroport> aeroports = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +69,76 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
+        chargerAvions();
+        chargerAeroports();
     }
+
+    private void chargerAeroports() {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/aeroport/").newBuilder();
+
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) { }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                try {
+                    JSONArray json_array = new JSONArray(json);
+                    for (int i=0; i<json_array.length(); i++){
+                        JSONObject json_obj = json_array.getJSONObject(i);
+                        Aeroport aeroport = new Aeroport(
+                                json_obj.getString("id"),
+                                json_obj.getString("nom"),
+                                json_obj.getString("ville")
+                        );
+                        aeroports.add(aeroport);
+                    }
+                } catch (Exception e) {
+                    Log.i("==== MAIN ACTIVITY ====", e.getMessage());
+                }
+            }
+        });
+    }
+
+    private void chargerAvions() {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/avion/").newBuilder();
+
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) { }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                try {
+                    JSONArray json_array = new JSONArray(json);
+                    for (int i=0; i<json_array.length(); i++){
+                        JSONObject json_obj = json_array.getJSONObject(i);
+                        Avion avion = new Avion(
+                                json_obj.getString("id"),
+                                json_obj.getString("model"),
+                                json_obj.getString("compagnie")
+                        );
+                        avions.add(avion);
+                    }
+                } catch (Exception e) {
+                    Log.i("==== MAIN ACTIVITY ====", e.getMessage());
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu( Menu menu) {
         getMenuInflater().inflate( R.menu.menu_main, menu);

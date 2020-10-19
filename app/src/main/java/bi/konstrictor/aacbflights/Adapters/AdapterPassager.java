@@ -1,6 +1,5 @@
 package bi.konstrictor.aacbflights.Adapters;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
-import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.R;

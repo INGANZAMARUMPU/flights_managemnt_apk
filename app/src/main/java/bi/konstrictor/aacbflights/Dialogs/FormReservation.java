@@ -49,10 +49,10 @@ public class FormReservation extends Dialog {
             }
         });
 
-        fillSpinner();
+        fillSpinners();
     }
 
-    private void fillSpinner() {
+    private void fillSpinners() {
         ArrayAdapter adapter_passager = new ArrayAdapter(
                 activity,
                 R.layout.support_simple_spinner_dropdown_item,

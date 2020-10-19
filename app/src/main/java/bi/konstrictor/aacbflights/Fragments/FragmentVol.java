@@ -56,7 +56,7 @@ public class FragmentVol extends Fragment {
         recycler_vol.addItemDecoration(new DividerItemDecoration(recycler_vol.getContext(), DividerItemDecoration.VERTICAL));
 
         vols = new ArrayList<>();
-        adaptateur = new AdapterVol(vols);
+        adaptateur = new AdapterVol(vols, context);
         recycler_vol.setAdapter(adaptateur);
 
         swipe_vol_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
