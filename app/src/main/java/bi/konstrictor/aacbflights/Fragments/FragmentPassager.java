@@ -60,7 +60,7 @@ public class FragmentPassager extends Fragment {
         recycler_passager.addItemDecoration(new DividerItemDecoration(recycler_passager.getContext(), DividerItemDecoration.HORIZONTAL));
 
         passagers = new ArrayList<>();
-        adaptateur = new AdapterPassager(passagers);
+        adaptateur = new AdapterPassager(passagers, context);
         recycler_passager.setAdapter(adaptateur);
 
         swipe_passager_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

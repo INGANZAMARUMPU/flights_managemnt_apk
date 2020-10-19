@@ -15,18 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/field_user_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CODE DE VOYAGEUR"
-            android:focusedByDefault="true"
-            android:drawableEnd="@drawable/ic_credit_card"
-            android:lines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
             android:id="@+id/field_user_nom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,6 +33,19 @@
             android:hint="PRENOM"
             android:focusedByDefault="true"
             android:drawableEnd="@drawable/ic_edit"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/field_user_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MOT DE PASSE"
+            android:focusedByDefault="true"
+            android:drawableEnd="@drawable/ic_credit_card"
+            android:inputType="textPassword"
             android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout

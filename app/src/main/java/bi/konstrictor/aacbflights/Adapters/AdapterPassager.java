@@ -1,5 +1,6 @@
 package bi.konstrictor.aacbflights.Adapters;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Dialogs.FormPassager;
+import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.R;
 
 public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHolder> {
     ArrayList<Passager> passagers;
+    private MainActivity activity;
 
-    public AdapterPassager(ArrayList<Passager> passagers) {
+    public AdapterPassager(ArrayList<Passager> passagers, MainActivity activity) {
         this.passagers = passagers;
+        this.activity = activity;
     }
 
     @NonNull
@@ -30,9 +35,17 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Passager passager = passagers.get(position);
+        final Passager passager = passagers.get(position);
         holder.lbl_card_pass_fullname.setText(passager.getFullname());
         holder.lbl_card_pass_serial.setText(passager.code);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormPassager f_passager = new FormPassager(activity);
+                f_passager.setEdition(passager);
+                f_passager.show();
+            }
+        });
     }
     @Override
     public int getItemCount() {

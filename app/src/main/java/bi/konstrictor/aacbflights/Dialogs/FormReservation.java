@@ -85,6 +85,7 @@ public class FormReservation extends Dialog {
     }
 
     public void setEdition(Reservation reservation) {
+        this.edition = true;
         this.reservation = reservation;
         spinner_res_passager.setSelection(getIndexOfPassager(reservation.id_passager));
         spinner_res_vol.setSelection(getIndexOfVol(reservation.id_vol));

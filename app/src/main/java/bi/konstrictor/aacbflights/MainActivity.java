@@ -60,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu( Menu menu) {
         getMenuInflater().inflate( R.menu.menu_main, menu);
         this.menu = menu;
-        if (group.equalsIgnoreCase("admin") & tablayout.getSelectedTabPosition()==0)
-            menu.findItem(R.id.menu_add).setVisible(true);
+        if (group.equalsIgnoreCase("admin")) menu.findItem(R.id.menu_add).setVisible(true);
         return true;
     }
     @Override
