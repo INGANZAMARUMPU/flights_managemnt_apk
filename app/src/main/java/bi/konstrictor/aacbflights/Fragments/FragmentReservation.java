@@ -59,7 +59,7 @@ public class FragmentReservation extends Fragment {
         recycler_reservation.addItemDecoration(new DividerItemDecoration(recycler_reservation.getContext(), DividerItemDecoration.VERTICAL));
 
         reservations = new ArrayList<>();
-        adaptateur = new AdapterReservation(reservations);
+        adaptateur = new AdapterReservation(reservations, context);
         recycler_reservation.setAdapter(adaptateur);
 
         swipe_reservation_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -108,7 +108,9 @@ public class FragmentReservation extends Fragment {
                                 json_obj.getString("depart"),
                                 json_obj.getString("arrivee"),
                                 json_obj.getString("user"),
-                                json_obj.getString("vol")
+                                json_obj.getString("vol"),
+                                json_obj.getString("id_passager"),
+                                json_obj.getString("id_vol")
                         );
                         reservations.add(res);
                     }

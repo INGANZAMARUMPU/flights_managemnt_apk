@@ -10,16 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.R;
 
 public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.ViewHolder> {
+    private final MainActivity activity;
     ArrayList<Reservation> reservations;
 
-    public AdapterReservation(ArrayList<Reservation> reservations) {
+    public AdapterReservation(ArrayList<Reservation> reservations, MainActivity activity) {
         this.reservations = reservations;
+        this.activity = activity;
     }
 
     @NonNull
@@ -31,11 +34,19 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Reservation reservation = reservations.get(position);
+        final Reservation reservation = reservations.get(position);
         holder.lbl_card_res_fullname.setText(reservation.getFullname());
         holder.lbl_card_res_depart.setText(Host.getStrDate(reservation.depart));
         holder.lbl_card_res_arrivee.setText(Host.getStrDate(reservation.arrivee));
         holder.lbl_card_res_vol.setText(reservation.vol);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormReservation f_reservation = new FormReservation(activity);
+                f_reservation.setEdition(reservation);
+                f_reservation.show();
+            }
+        });
     }
     @Override
     public int getItemCount() {
