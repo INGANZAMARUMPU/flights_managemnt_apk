@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
-import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Fragments.FragmentPassager;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.R;
 
 public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHolder> {
     ArrayList<Passager> passagers;
-    private MainActivity activity;
+    private FragmentPassager parent;
 
-    public AdapterPassager(ArrayList<Passager> passagers, MainActivity activity) {
+    public AdapterPassager(ArrayList<Passager> passagers, FragmentPassager parent) {
         this.passagers = passagers;
-        this.activity = activity;
+        this.parent = parent;
     }
 
     @NonNull
@@ -39,7 +39,7 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FormPassager f_passager = new FormPassager(activity);
+                FormPassager f_passager = new FormPassager(parent);
                 f_passager.setEdition(passager);
                 f_passager.show();
             }

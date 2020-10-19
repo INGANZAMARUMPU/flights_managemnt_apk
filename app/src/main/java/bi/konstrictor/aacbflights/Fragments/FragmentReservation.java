@@ -39,7 +39,7 @@ import okhttp3.Response;
 
 public class FragmentReservation extends Fragment {
 
-    private final MainActivity context;
+    public MainActivity context;
     RecyclerView recycler_reservation;
     SwipeRefreshLayout swipe_reservation_refresh;
     private ArrayList<Reservation> reservations;
@@ -59,7 +59,7 @@ public class FragmentReservation extends Fragment {
         recycler_reservation.addItemDecoration(new DividerItemDecoration(recycler_reservation.getContext(), DividerItemDecoration.VERTICAL));
 
         reservations = new ArrayList<>();
-        adaptateur = new AdapterReservation(reservations, context);
+        adaptateur = new AdapterReservation(reservations, this);
         recycler_reservation.setAdapter(adaptateur);
 
         swipe_reservation_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

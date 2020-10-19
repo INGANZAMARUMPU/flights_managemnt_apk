@@ -37,7 +37,7 @@ import okhttp3.Response;
  */
 public class FragmentVol extends Fragment {
 
-    private final MainActivity context;
+    public final MainActivity context;
     private SwipeRefreshLayout swipe_vol_refresh;
     private RecyclerView recycler_vol;
     private ArrayList<Vol> vols;
@@ -56,7 +56,7 @@ public class FragmentVol extends Fragment {
         recycler_vol.addItemDecoration(new DividerItemDecoration(recycler_vol.getContext(), DividerItemDecoration.VERTICAL));
 
         vols = new ArrayList<>();
-        adaptateur = new AdapterVol(vols, context);
+        adaptateur = new AdapterVol(vols, this);
         recycler_vol.setAdapter(adaptateur);
 
         swipe_vol_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

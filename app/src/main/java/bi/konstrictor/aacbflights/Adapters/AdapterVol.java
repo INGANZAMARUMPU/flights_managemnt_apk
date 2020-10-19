@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Fragments.FragmentVol;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.R;
@@ -19,11 +20,11 @@ import bi.konstrictor.aacbflights.Models.Vol;
 
 public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
     ArrayList<Vol> vols;
-    private MainActivity activity;
+    private FragmentVol parent;
 
-    public AdapterVol(ArrayList<Vol> vols, MainActivity activity) {
+    public AdapterVol(ArrayList<Vol> vols, FragmentVol parent) {
         this.vols = vols;
-        this.activity = activity;
+        this.parent = parent;
     }
 
     @NonNull
@@ -44,7 +45,7 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FormVol form_vol = new FormVol(activity);
+                FormVol form_vol = new FormVol(parent);
                 form_vol.setEdition(vol);
                 form_vol.show();
             }

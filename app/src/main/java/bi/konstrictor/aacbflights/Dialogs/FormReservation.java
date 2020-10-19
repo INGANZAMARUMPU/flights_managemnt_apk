@@ -7,23 +7,37 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import bi.konstrictor.aacbflights.Fragments.FragmentPassager;
+import bi.konstrictor.aacbflights.Fragments.FragmentReservation;
 import bi.konstrictor.aacbflights.MainActivity;
-import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.R;
 
 public class FormReservation extends Dialog {
 
-    private final MainActivity activity;
-    private final Button btn_res_cancel, btn_res_submit, btn_res_delete;
+    private FragmentReservation parent;
+    private  Button btn_res_cancel, btn_res_submit, btn_res_delete;
     private Spinner spinner_res_passager, spinner_res_vol;
     private boolean edition = false;
     private Reservation reservation;
+    private MainActivity context;
 
-    public FormReservation(MainActivity activity) {
-        super(activity, R.style.Theme_AppCompat_DayNight_Dialog);
+    public FormReservation(FragmentReservation parent) {
+        super(parent.context, R.style.Theme_AppCompat_DayNight_Dialog);
         setContentView(R.layout.form_reservation);
-        this.activity = activity;
+        this.parent = parent;
+        this.context = parent.context;
+        init();
+    }
+
+    public FormReservation(MainActivity context) {
+        super(context, R.style.Theme_AppCompat_DayNight_Dialog);
+        setContentView(R.layout.form_reservation);
+        this.context = context;
+        init();
+    }
+
+    private void init() {
         spinner_res_passager = findViewById(R.id.spinner_res_passager);
         spinner_res_vol = findViewById(R.id.spinner_res_vol);
         btn_res_cancel = findViewById(R.id.btn_res_cancel);
@@ -54,21 +68,21 @@ public class FormReservation extends Dialog {
 
     private void fillSpinners() {
         ArrayAdapter adapter_passager = new ArrayAdapter(
-                activity,
+                context,
                 R.layout.support_simple_spinner_dropdown_item,
-                activity.passagers);
+                context.passagers);
         ArrayAdapter adapter_vol = new ArrayAdapter(
-                activity,
+                context,
                 R.layout.support_simple_spinner_dropdown_item,
-                activity.vols);
+                context.vols);
         spinner_res_passager.setAdapter(adapter_passager);
         spinner_res_vol.setAdapter(adapter_vol);
     }
 
     private int getIndexOfVol(String id_vol) {
-        for (int i = 0; i < activity.vols.size(); i++) {
-            if(activity.vols.get(i).id.equals(id_vol)){
-                Log.i("==== DIALOG ====", activity.vols.get(i).toString());
+        for (int i = 0; i < parent.context.vols.size(); i++) {
+            if(context.vols.get(i).id.equals(id_vol)){
+                Log.i("==== DIALOG ====", context.vols.get(i).toString());
                 return i;
             }
         }
@@ -76,8 +90,8 @@ public class FormReservation extends Dialog {
     }
 
     private int getIndexOfPassager(String id_passager) {
-        for (int i = 0; i < activity.passagers.size(); i++) {
-            if(activity.passagers.get(i).id.equals(id_passager)){
+        for (int i = 0; i < context.passagers.size(); i++) {
+            if(context.passagers.get(i).id.equals(id_passager)){
                 return i;
             }
         }

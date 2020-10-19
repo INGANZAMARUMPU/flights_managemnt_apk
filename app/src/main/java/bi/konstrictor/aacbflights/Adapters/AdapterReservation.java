@@ -12,17 +12,17 @@ import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Host;
-import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Fragments.FragmentReservation;
 import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.R;
 
 public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.ViewHolder> {
-    private final MainActivity activity;
+    private final FragmentReservation parent;
     ArrayList<Reservation> reservations;
 
-    public AdapterReservation(ArrayList<Reservation> reservations, MainActivity activity) {
+    public AdapterReservation(ArrayList<Reservation> reservations, FragmentReservation parent) {
         this.reservations = reservations;
-        this.activity = activity;
+        this.parent = parent;
     }
 
     @NonNull
@@ -42,7 +42,7 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FormReservation f_reservation = new FormReservation(activity);
+                FormReservation f_reservation = new FormReservation(parent);
                 f_reservation.setEdition(reservation);
                 f_reservation.show();
             }
