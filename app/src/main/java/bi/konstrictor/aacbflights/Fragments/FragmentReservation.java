@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -23,6 +24,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterReservation;
+import bi.konstrictor.aacbflights.Dialogs.FormPassager;
+import bi.konstrictor.aacbflights.Dialogs.FormReservation;
+import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.LoginActivity;
 import bi.konstrictor.aacbflights.MainActivity;
@@ -37,7 +41,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class FragmentReservation extends Fragment {
+public class FragmentReservation extends Fragment{
 
     public MainActivity context;
     RecyclerView recycler_reservation;
@@ -54,6 +58,7 @@ public class FragmentReservation extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reservation, container, false);
         recycler_reservation = view.findViewById(R.id.recycler_reservation);
         swipe_reservation_refresh = view.findViewById(R.id.swipe_reservation_refresh);
+        setHasOptionsMenu(true);
 
         recycler_reservation.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recycler_reservation.addItemDecoration(new DividerItemDecoration(recycler_reservation.getContext(), DividerItemDecoration.VERTICAL));
@@ -72,7 +77,24 @@ public class FragmentReservation extends Fragment {
         getResevations();
         return view;
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_search) {
+            Toast.makeText(context, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.menu_add) {
+//            if (tablayout.getTabAt(0).isSelected()) {
+                new FormReservation(this).show();
+//            } else if (tablayout.getTabAt(1).isSelected()) {
+//                new FormVol(this).show();
+//            } else if (tablayout.getTabAt(2).isSelected()) {
+//                new FormPassager(this).show();
+//            }
+        } else if (id == R.id.menu_filter) {
+            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void getResevations() {
 
         OkHttpClient client = new OkHttpClient();
@@ -122,5 +144,21 @@ public class FragmentReservation extends Fragment {
                 }
             }
         });
+    }
+
+    public void pushReservation(Reservation res) {
+        reservations.add(res);
+        adaptateur.setReservations(reservations);
+        adaptateur.notifyDataSetChanged();
+    }
+
+    public void editReservation(Reservation res) {
+
+    }
+
+    public void removeReservation(Reservation reservation) {
+        reservations.remove(reservation);
+        adaptateur.setReservations(reservations);
+        adaptateur.notifyDataSetChanged();
     }
 }

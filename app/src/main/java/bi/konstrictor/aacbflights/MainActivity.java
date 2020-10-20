@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentStatePA main_fspa;
     private Menu menu;
     private SharedPreferences sessionPreference;
-    private String group;
+    public String token, group;
     public ArrayList<Passager> passagers = new ArrayList<>();
     public ArrayList<Vol> vols = new ArrayList<>();
     public ArrayList<Avion> avions = new ArrayList<>();
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout.getTabAt(2).setIcon(R.drawable.ic_passagers);
 
         sessionPreference = getSharedPreferences("user_session", Context.MODE_PRIVATE);
-        String token = sessionPreference.getString("token", "");
+        token = sessionPreference.getString("token", "");
         group = sessionPreference.getString("type", "");
         if(token.trim().isEmpty()){
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -146,24 +146,12 @@ public class MainActivity extends AppCompatActivity {
         if (group.equalsIgnoreCase("admin")) menu.findItem(R.id.menu_add).setVisible(true);
         return true;
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.menu_search) {
-            Toast.makeText(this, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.menu_add){
-            if(tablayout.getTabAt(0).isSelected()){
-                new FormReservation(this).show();
-            }else if(tablayout.getTabAt(1).isSelected()){
-                new FormVol(this).show();
-            }else if(tablayout.getTabAt(2).isSelected()){
-                new FormPassager(this).show();
-            }
-        }else if(id == R.id.menu_filter){
-            Toast.makeText(this, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
-        }else if(id == R.id.menu_logout){
-            Toast.makeText(this, "DECONNEXION EN COURS...", Toast.LENGTH_LONG).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if(id == R.id.menu_logout){
+//            Toast.makeText(this, "DECONNEXION EN COURS...", Toast.LENGTH_LONG).show();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

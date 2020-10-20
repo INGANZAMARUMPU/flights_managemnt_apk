@@ -105,7 +105,10 @@ public class FragmentVol extends Fragment {
                                 json_obj.getString("avion"),
                                 json_obj.getString("compagnie"),
                                 json_obj.getString("depart"),
-                                json_obj.getString("arrivee")
+                                json_obj.getString("arrivee"),
+                                json_obj.getString("id_avion"),
+                                json_obj.getString("id_source"),
+                                json_obj.getString("id_destination")
                         );
                         vols.add(vol);
                     }

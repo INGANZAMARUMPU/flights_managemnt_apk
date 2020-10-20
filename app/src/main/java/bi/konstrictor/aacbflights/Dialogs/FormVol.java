@@ -47,7 +47,7 @@ public class FormVol extends Dialog {
         btn_vol_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                delete();
             }
         });
         btn_vol_cancel.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +64,11 @@ public class FormVol extends Dialog {
         });
         fillSpinner();
     }
+
+    private void delete() {
+
+    }
+
     private void fillSpinner() {
         ArrayAdapter adapter_aeroport = new ArrayAdapter(
                 context,
@@ -78,21 +83,16 @@ public class FormVol extends Dialog {
         spinner_source.setAdapter(adapter_aeroport);
     }
 
-    private int getIndexOfVol(String id_vol) {
+    private int getIndexOfAvion(String id_avion) {
         for (int i = 0; i < context.vols.size(); i++) {
-            if(context.vols.get(i).id.equals(id_vol)){
-                Log.i("==== DIALOG ====", context.vols.get(i).toString());
-                return i;
-            }
+            if(context.avions.get(i).id.equals(id_avion)) return i;
         }
         return 0;
     }
 
-    private int getIndexOfPassager(String id_passager) {
+    private int getIndexOfAeroport(String id_aeroport) {
         for (int i = 0; i < context.passagers.size(); i++) {
-            if(context.passagers.get(i).id.equals(id_passager)){
-                return i;
-            }
+            if(context.aeroports.get(i).id.equals(id_aeroport)) return i;
         }
         return 0;
     }
@@ -101,5 +101,8 @@ public class FormVol extends Dialog {
         edition = true;
         this.vol = vol;
         btn_vol_delete.setVisibility(View.VISIBLE);
+        spinner_avion.setSelection(getIndexOfAvion(vol.id_avion));
+        spinner_source.setSelection(getIndexOfAeroport(vol.id_source));
+        spinner_destination.setSelection(getIndexOfAeroport(vol.id_destination));
     }
 }
