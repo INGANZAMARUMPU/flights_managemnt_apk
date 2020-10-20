@@ -54,6 +54,10 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
         this.passagers = passagers;
     }
 
+    public void setPassager(ArrayList<Passager> passagers) {
+        this.passagers = passagers;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView lbl_card_pass_fullname, lbl_card_pass_serial;
         View view;

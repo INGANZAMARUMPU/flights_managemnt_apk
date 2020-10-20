@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
-import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Passager;
@@ -118,9 +117,8 @@ public class FragmentPassager extends Fragment {
                         JSONObject json_obj = json_array.getJSONObject(i);
                         Passager passager = new Passager(
                                 json_obj.getString("id"),
-                                json_obj.getString("last_name"),
                                 json_obj.getString("first_name"),
-                                "#"+((int)(Math.random()*1000000))
+                                json_obj.getString("last_name")
                         );
                         passagers.add(passager);
                     }
@@ -133,5 +131,27 @@ public class FragmentPassager extends Fragment {
                 }
             }
         });
+    }
+    public void pushPassager(Passager pas) {
+        passagers.add(pas);
+        adaptateur.setPassager(passagers);
+        adaptateur.notifyDataSetChanged();
+    }
+
+    public void editPassager(Passager pas) {
+        for (int i=0; i<passagers.size(); i++){
+            if(passagers.get(i).id == pas.id){
+                passagers.set(i, pas);
+                adaptateur.setPassager(passagers);
+                adaptateur.notifyDataSetChanged();
+                return;
+            }
+        }
+    }
+
+    public void removePassager(Passager pas) {
+        passagers.remove(pas);
+        adaptateur.setPassager(passagers);
+        adaptateur.notifyDataSetChanged();
     }
 }
