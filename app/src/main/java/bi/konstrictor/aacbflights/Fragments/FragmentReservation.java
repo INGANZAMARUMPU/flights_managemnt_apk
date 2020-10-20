@@ -153,7 +153,14 @@ public class FragmentReservation extends Fragment{
     }
 
     public void editReservation(Reservation res) {
-
+        for (int i=0; i<reservations.size(); i++){
+            if(reservations.get(i).id == res.id){
+                reservations.set(i, res);
+                adaptateur.setReservations(reservations);
+                adaptateur.notifyDataSetChanged();
+                return;
+            }
+        }
     }
 
     public void removeReservation(Reservation reservation) {

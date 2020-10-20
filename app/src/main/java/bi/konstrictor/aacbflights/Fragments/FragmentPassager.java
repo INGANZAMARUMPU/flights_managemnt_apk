@@ -3,6 +3,7 @@ package bi.konstrictor.aacbflights.Fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterPassager;
+import bi.konstrictor.aacbflights.Dialogs.FormPassager;
+import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Passager;
@@ -54,6 +57,7 @@ public class FragmentPassager extends Fragment {
         View view = inflater.inflate(R.layout.fragment_passager, container, false);;
         swipe_passager_refresh = view.findViewById(R.id.swipe_passager_refresh);
         recycler_passager = view.findViewById(R.id.recycler_passager);
+        setHasOptionsMenu(true);
 
         recycler_passager.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recycler_passager.addItemDecoration(new DividerItemDecoration(recycler_passager.getContext(), DividerItemDecoration.VERTICAL));
@@ -73,7 +77,18 @@ public class FragmentPassager extends Fragment {
         getResevations();
         return view;
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_search) {
+            Toast.makeText(context, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.menu_add) {
+            new FormPassager(this).show();
+        } else if (id == R.id.menu_filter) {
+            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void getResevations() {
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/user/").newBuilder();

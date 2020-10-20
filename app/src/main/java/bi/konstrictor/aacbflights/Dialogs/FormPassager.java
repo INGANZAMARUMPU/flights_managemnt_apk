@@ -19,23 +19,11 @@ public class FormPassager extends Dialog {
     private Passager passager;
     private boolean edition = false;
 
-    public FormPassager(MainActivity context) {
-        super(context, R.style.Theme_AppCompat_DayNight_Dialog);
-        setContentView(R.layout.form_passager);
-        this.context = context;
-        init();
-    }
-
     public FormPassager(FragmentPassager parent) {
         super(parent.context, R.style.Theme_AppCompat_DayNight_Dialog);
         setContentView(R.layout.form_passager);
         this.parent = parent;
         this.context = parent.context;
-        init();
-    }
-
-    private void init() {
-
         field_user_nom = findViewById(R.id.field_user_nom);
         field_user_code = findViewById(R.id.field_user_code);
         field_user_prenom = findViewById(R.id.field_user_prenom);

@@ -106,7 +106,7 @@ public class FormReservation extends Dialog {
                 JSONObject json_obj = null;
                 try {
                     json_obj = new JSONObject(json);
-                    Reservation res = new Reservation(
+                    final Reservation res = new Reservation(
                             json_obj.getString("id"),
                             json_obj.getString("nom"),
                             json_obj.getString("prenom"),
@@ -117,7 +117,13 @@ public class FormReservation extends Dialog {
                             json_obj.getString("id_passager"),
                             json_obj.getString("id_vol")
                     );
-                    parent.pushReservation(res);
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            parent.pushReservation(res);
+                        }
+                    });
+                    FormReservation.this.dismiss();
                 } catch (JSONException e) {
                     context.runOnUiThread(new Runnable() {
                         @Override
@@ -162,7 +168,7 @@ public class FormReservation extends Dialog {
                 String json = response.body().string();
                 try {
                     JSONObject json_obj = new JSONObject(json);
-                    Reservation res = new Reservation(
+                    final Reservation res = new Reservation(
                             json_obj.getString("id"),
                             json_obj.getString("nom"),
                             json_obj.getString("prenom"),
@@ -173,7 +179,13 @@ public class FormReservation extends Dialog {
                             json_obj.getString("id_passager"),
                             json_obj.getString("id_vol")
                     );
-                    parent.editReservation(res);
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            parent.editReservation(res);
+                        }
+                    });
+                    FormReservation.this.dismiss();
                 } catch (JSONException e) {
                     context.runOnUiThread(new Runnable() {
                         @Override
@@ -218,7 +230,13 @@ public class FormReservation extends Dialog {
                     });
                     return;
                 }
-                parent.removeReservation(reservation);
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        parent.removeReservation(reservation);
+                    }
+                });
+                FormReservation.this.dismiss();
             }
         });
     }

@@ -3,6 +3,7 @@ package bi.konstrictor.aacbflights.Fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterVol;
+import bi.konstrictor.aacbflights.Dialogs.FormReservation;
+import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Vol;
@@ -51,6 +54,7 @@ public class FragmentVol extends Fragment {
         View view = inflater.inflate(R.layout.fragment_vol, container, false);;
         swipe_vol_refresh = view.findViewById(R.id.swipe_vol_refresh);
         recycler_vol = view.findViewById(R.id.recycler_vol);
+        setHasOptionsMenu(true);
 
         recycler_vol.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recycler_vol.addItemDecoration(new DividerItemDecoration(recycler_vol.getContext(), DividerItemDecoration.VERTICAL));
@@ -68,6 +72,19 @@ public class FragmentVol extends Fragment {
         });
         getResevations();
         return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_search) {
+            Toast.makeText(context, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
+        } else if (id == R.id.menu_add) {
+            new FormVol(this).show();
+        } else if (id == R.id.menu_filter) {
+            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getResevations() {

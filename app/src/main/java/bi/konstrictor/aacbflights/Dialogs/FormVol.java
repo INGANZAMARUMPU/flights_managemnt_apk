@@ -26,16 +26,6 @@ public class FormVol extends Dialog {
         setContentView(R.layout.form_vol);
         this.parent = parent;
         this.context = parent.context;
-        init();
-    }
-
-    public FormVol(MainActivity context) {
-        super(context, R.style.Theme_AppCompat_DayNight_Dialog);
-        setContentView(R.layout.form_vol);
-        this.context = context;
-        init();
-    }
-    private void init(){
         spinner_avion = findViewById(R.id.spinner_avion);
         spinner_source = findViewById(R.id.spinner_source);
         spinner_destination = findViewById(R.id.spinner_destination);
