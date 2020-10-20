@@ -21,10 +21,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterVol;
-import bi.konstrictor.aacbflights.Dialogs.FormReservation;
+import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.R;
 import okhttp3.Call;
@@ -138,5 +139,27 @@ public class FragmentVol extends Fragment {
                 }
             }
         });
+    }
+    public void pushVol(Vol res) {
+        vols.add(res);
+        adaptateur.setVols(vols);
+        adaptateur.notifyDataSetChanged();
+    }
+
+    public void editVol(Vol res) {
+        for (int i=0; i<vols.size(); i++){
+            if(vols.get(i).id == res.id){
+                vols.set(i, res);
+                adaptateur.setVols(vols);
+                adaptateur.notifyDataSetChanged();
+                return;
+            }
+        }
+    }
+
+    public void removeVol(Vol vol) {
+        vols.remove(vol);
+        adaptateur.setVols(vols);
+        adaptateur.notifyDataSetChanged();
     }
 }
