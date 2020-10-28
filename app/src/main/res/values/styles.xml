@@ -12,5 +12,8 @@
         <item name="android:textSize">4pt</item>
         <item name="android:textColor">#A22</item>
     </style>
+    <style name="NumberPickerStyle">
+        <item name="android:textSize">4pt</item>
+    </style>
 
 </resources>

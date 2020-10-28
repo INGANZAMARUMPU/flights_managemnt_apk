@@ -1,4 +1,4 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Dialogs.FormPassager;
+import bi.konstrictor.aacbflights.Fragments.FragmentPassager;
+import bi.konstrictor.aacbflights.Models.Passager;
+import bi.konstrictor.aacbflights.R;
+
 public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHolder> {
     ArrayList<Passager> passagers;
-    MainActivity context;
+    private FragmentPassager parent;
 
-    public AdapterPassager(ArrayList<Passager> passagers, MainActivity context) {
+    public AdapterPassager(ArrayList<Passager> passagers, FragmentPassager parent) {
         this.passagers = passagers;
-        this.context = context;
+        this.parent = parent;
     }
 
     @NonNull
@@ -28,28 +33,40 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Passager passager = passagers.get(position);
+        final Passager passager = passagers.get(position);
         holder.lbl_card_pass_fullname.setText(passager.getFullname());
-        holder.lbl_card_pass_depart.setText(passager.depart);
-        holder.lbl_card_pass_arrivee.setText(passager.arrivee);
-        holder.lbl_card_pass_vol.setText(passager.vol);
+        holder.lbl_card_pass_serial.setText(passager.code);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormPassager f_passager = new FormPassager(parent);
+                f_passager.setEdition(passager);
+                f_passager.show();
+            }
+        });
     }
     @Override
     public int getItemCount() {
         return passagers.size();
     }
 
+    public void setPassagers(ArrayList<Passager> passagers) {
+        this.passagers = passagers;
+    }
+
+    public void setPassager(ArrayList<Passager> passagers) {
+        this.passagers = passagers;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView lbl_card_pass_fullname, lbl_card_pass_depart, lbl_card_pass_arrivee, lbl_card_pass_vol;
+        TextView lbl_card_pass_fullname, lbl_card_pass_serial;
         View view;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
             lbl_card_pass_fullname = itemView.findViewById(R.id.lbl_card_pass_fullname);
-            lbl_card_pass_depart = itemView.findViewById(R.id.lbl_card_pass_depart);
-            lbl_card_pass_arrivee = itemView.findViewById(R.id.lbl_card_pass_arrivee);
-            lbl_card_pass_vol = itemView.findViewById(R.id.lbl_card_pass_vol);
+            lbl_card_pass_serial = itemView.findViewById(R.id.lbl_card_pass_serial);
         }
     }
 }

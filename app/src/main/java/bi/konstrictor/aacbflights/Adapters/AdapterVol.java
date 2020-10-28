@@ -1,5 +1,6 @@
-package bi.konstrictor.aacbflights;
+package bi.konstrictor.aacbflights.Adapters;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Fragments.FragmentVol;
+import bi.konstrictor.aacbflights.Host;
+import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.R;
+import bi.konstrictor.aacbflights.Models.Vol;
+
 public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
     ArrayList<Vol> vols;
-    MainActivity context;
+    private FragmentVol parent;
 
-    public AdapterVol(ArrayList<Vol> vols, MainActivity context) {
+    public AdapterVol(ArrayList<Vol> vols, FragmentVol parent) {
         this.vols = vols;
-        this.context = context;
+        this.parent = parent;
     }
 
     @NonNull
@@ -28,16 +36,28 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Vol vol = vols.get(position);
+        final Vol vol = vols.get(position);
         holder.lbl_card_vol_source.setText(vol.source);
         holder.lbl_card_vol_destination.setText(vol.destination);
-        holder.lbl_card_vol_depart.setText(vol.depart);
-        holder.lbl_card_vol_arrivee.setText(vol.arrivee);
+        holder.lbl_card_vol_depart.setText(Host.getStrDate(vol.depart));
+        holder.lbl_card_vol_arrivee.setText(Host.getStrDate(vol.arrivee));
         holder.lbl_card_vol_compagnie.setText(vol.compagnie);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FormVol form_vol = new FormVol(parent);
+                form_vol.setEdition(vol);
+                form_vol.show();
+            }
+        });
     }
     @Override
     public int getItemCount() {
         return vols.size();
+    }
+
+    public void setVols(ArrayList<Vol> vols) {
+        this.vols = vols;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

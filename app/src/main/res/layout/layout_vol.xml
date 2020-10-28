@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,7 +25,7 @@
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:text="Bujumbura"
-                        android:textSize="12pt"
+                        android:textSize="9pt"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/lbl_card_vol_depart"
@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:text="21/08/2020 17h00"
-                        android:textSize="8pt"
+                        android:textSize="6pt"
                         android:textStyle="bold" />
                 </LinearLayout>
                 <ImageView
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:text="Gitega"
-                        android:textSize="12pt"
+                        android:textSize="9pt"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/lbl_card_vol_arrivee"
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:text="22/08/2020 17h00"
-                        android:textSize="8pt"
+                        android:textSize="6pt"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -78,14 +78,15 @@
                     android:lines="1"
                     android:text="Compagnie :"
                     android:textStyle="bold"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:textSize="4pt"/>
                 <TextView
                     android:id="@+id/lbl_card_vol_compagnie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lines="1"
                     android:text="Ethiopian Airways"
-                    android:textSize="8pt"
+                    android:textSize="6pt"
                     android:textStyle="bold"
                     android:textColor="#272"/>
             </LinearLayout>

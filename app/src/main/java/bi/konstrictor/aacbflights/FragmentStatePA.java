@@ -6,12 +6,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import bi.konstrictor.aacbflights.Fragments.FragmentPassager;
+import bi.konstrictor.aacbflights.Fragments.FragmentReservation;
+import bi.konstrictor.aacbflights.Fragments.FragmentVol;
+
 public class FragmentStatePA extends FragmentStatePagerAdapter {
 
-    private String[] titles = new String[] {"ENTRANTS", "SORTANTS", "PASSAGERS"};
+    private final MainActivity context;
+    private String[] titles = new String[] {"RESERVATIONS", "VOLS", "PASSAGERS"};
 
-    public FragmentStatePA(@NonNull FragmentManager fm, int behavior) {
+    public FragmentStatePA(@NonNull FragmentManager fm, int behavior, MainActivity context) {
         super(fm, behavior);
+        this.context = context;
     }
 
     @NonNull
@@ -19,11 +25,11 @@ public class FragmentStatePA extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 1:
-                return new FragmentSortant();
+                return new FragmentVol(context);
             case 2:
-                return new FragmentPassager();
+                return new FragmentPassager(context);
             default:
-                return new FragmentEntrant();
+                return new FragmentReservation(context);
         }
     }
 
