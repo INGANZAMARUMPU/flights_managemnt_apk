@@ -146,12 +146,18 @@ public class MainActivity extends AppCompatActivity {
         if (group.equalsIgnoreCase("admin")) menu.findItem(R.id.menu_add).setVisible(true);
         return true;
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if(id == R.id.menu_logout){
-//            Toast.makeText(this, "DECONNEXION EN COURS...", Toast.LENGTH_LONG).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.menu_logout){
+            SharedPreferences.Editor session = sessionPreference.edit();
+            session.remove("token");
+            session.remove("type");
+            session.commit();
+            // Lancement de MainActivity
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

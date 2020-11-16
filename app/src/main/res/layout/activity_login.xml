@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/field_login_username"
+                android:id="@+id/field_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/field_login_password"
+                android:id="@+id/field_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:background="@drawable/material_button"
-            android:text="login"
+            android:text="@string/login"
             android:layout_gravity="end|right"
             android:onClick="performLogin"
             android:textColor="#fff"/>
