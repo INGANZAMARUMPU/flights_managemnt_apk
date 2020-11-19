@@ -83,13 +83,7 @@ public class FragmentReservation extends Fragment{
         if (id == R.id.menu_search) {
             Toast.makeText(context, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
         } else if (id == R.id.menu_add) {
-//            if (tablayout.getTabAt(0).isSelected()) {
                 new FormReservation(this).show();
-//            } else if (tablayout.getTabAt(1).isSelected()) {
-//                new FormVol(this).show();
-//            } else if (tablayout.getTabAt(2).isSelected()) {
-//                new FormPassager(this).show();
-//            }
         } else if (id == R.id.menu_filter) {
             Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
         }

@@ -39,14 +39,16 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         holder.lbl_card_res_depart.setText(Host.getStrDate(reservation.depart));
         holder.lbl_card_res_arrivee.setText(Host.getStrDate(reservation.arrivee));
         holder.lbl_card_res_vol.setText(reservation.vol);
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FormReservation f_reservation = new FormReservation(parent);
-                f_reservation.setEdition(reservation);
-                f_reservation.show();
-            }
-        });
+        if(parent.context.group.equalsIgnoreCase("admin")) {
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FormReservation f_reservation = new FormReservation(parent);
+                    f_reservation.setEdition(reservation);
+                    f_reservation.show();
+                }
+            });
+        }
     }
     @Override
     public int getItemCount() {

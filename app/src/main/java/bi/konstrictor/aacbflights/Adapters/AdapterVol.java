@@ -42,14 +42,16 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
         holder.lbl_card_vol_depart.setText(Host.getStrDate(vol.depart));
         holder.lbl_card_vol_arrivee.setText(Host.getStrDate(vol.arrivee));
         holder.lbl_card_vol_compagnie.setText(vol.compagnie);
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FormVol form_vol = new FormVol(parent);
-                form_vol.setEdition(vol);
-                form_vol.show();
-            }
-        });
+        if(parent.context.group.equalsIgnoreCase("admin")) {
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FormVol form_vol = new FormVol(parent);
+                    form_vol.setEdition(vol);
+                    form_vol.show();
+                }
+            });
+        }
     }
     @Override
     public int getItemCount() {

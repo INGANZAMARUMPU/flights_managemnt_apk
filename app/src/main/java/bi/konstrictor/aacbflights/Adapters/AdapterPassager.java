@@ -36,14 +36,16 @@ public class AdapterPassager extends RecyclerView.Adapter<AdapterPassager.ViewHo
         final Passager passager = passagers.get(position);
         holder.lbl_card_pass_fullname.setText(passager.getFullname());
         holder.lbl_card_pass_serial.setText(passager.code);
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FormPassager f_passager = new FormPassager(parent);
-                f_passager.setEdition(passager);
-                f_passager.show();
-            }
-        });
+        if(parent.context.group.equalsIgnoreCase("admin")) {
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FormPassager f_passager = new FormPassager(parent);
+                    f_passager.setEdition(passager);
+                    f_passager.show();
+                }
+            });
+        }
     }
     @Override
     public int getItemCount() {

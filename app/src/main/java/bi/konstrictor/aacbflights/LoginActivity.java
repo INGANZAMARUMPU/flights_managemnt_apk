@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                     session.commit();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    Log.i("==== NEW TOKEN ====", token);
                 } catch (Exception e) {
                     Log.i("==== HOST ====", e.getMessage());
                 }

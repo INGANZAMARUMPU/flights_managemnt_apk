@@ -49,7 +49,6 @@ public class FragmentPassager extends Fragment {
         this.context = context;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
