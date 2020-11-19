@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class Host {
-//    public static String URL = "http://192.168.8.100:8000";
+    public static String URL = "http://192.168.1.100:8000";
 //    public static String URL = "https://bank.so-mas.net";
-    public static String URL = "http://10.0.2.2:8000";
+//    public static String URL = "http://10.0.2.2:8000";
 
     public static Date getDate(String str_date) {
         Date date;
