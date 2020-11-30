@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterReservation;
+import bi.konstrictor.aacbflights.Dialogs.FormFilter;
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
@@ -88,7 +89,7 @@ public class FragmentReservation extends Fragment implements Filterable {
         } else if (id == R.id.menu_add) {
                 new FormReservation(this).show();
         } else if (id == R.id.menu_filter) {
-            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
+            new FormFilter(context, this).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -167,5 +168,6 @@ public class FragmentReservation extends Fragment implements Filterable {
 
     @Override
     public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
+
     }
 }

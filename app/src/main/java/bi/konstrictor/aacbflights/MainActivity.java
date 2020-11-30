@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
         chargerAvions();
         chargerAeroports();
+        chargerCompagnies();
     }
 
     private void chargerAeroports() {
@@ -133,6 +134,38 @@ public class MainActivity extends AppCompatActivity {
                                 json_obj.getString("compagnie")
                         );
                         avions.add(avion);
+                    }
+                } catch (Exception e) {
+                    Log.i("==== MAIN ACTIVITY ====", e.getMessage());
+                }
+            }
+        });
+    }
+    private void chargerCompagnies() {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/compagnie/").newBuilder();
+
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) { }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                try {
+                    JSONArray json_array = new JSONArray(json);
+                    compagnies.add(new Compagnie("", "---------"));
+                    for (int i=0; i<json_array.length(); i++){
+                        JSONObject json_obj = json_array.getJSONObject(i);
+                        Compagnie compagnie = new Compagnie(
+                                json_obj.getString("id"),
+                                json_obj.getString("nom")
+                        );
+                        compagnies.add(compagnie);
                     }
                 } catch (Exception e) {
                     Log.i("==== MAIN ACTIVITY ====", e.getMessage());

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterVol;
+import bi.konstrictor.aacbflights.Dialogs.FormFilter;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Filterable;
@@ -86,7 +87,7 @@ public class FragmentVol extends Fragment implements Filterable {
         } else if (id == R.id.menu_add) {
             new FormVol(this).show();
         } else if (id == R.id.menu_filter) {
-            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
+            new FormFilter(context, this).show();
         }
         return super.onOptionsItemSelected(item);
     }

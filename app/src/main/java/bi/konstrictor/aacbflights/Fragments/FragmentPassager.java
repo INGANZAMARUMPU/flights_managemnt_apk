@@ -3,11 +3,14 @@ package bi.konstrictor.aacbflights.Fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterPassager;
+import bi.konstrictor.aacbflights.Dialogs.FormFilter;
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
 import bi.konstrictor.aacbflights.Filterable;
 import bi.konstrictor.aacbflights.Host;
@@ -78,13 +82,15 @@ public class FragmentPassager extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.menu_search) {
-            Toast.makeText(context, "RECHERCHE EN COURS...", Toast.LENGTH_LONG).show();
         } else if (id == R.id.menu_add) {
             new FormPassager(this).show();
-        } else if (id == R.id.menu_filter) {
-            Toast.makeText(context, "FILTRAGE EN COURS...", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        menu.findItem(R.id.menu_filter).setVisible(true);
+        super.onCreateOptionsMenu(menu, inflater);
     }
     private void getResevations() {
         OkHttpClient client = new OkHttpClient();
