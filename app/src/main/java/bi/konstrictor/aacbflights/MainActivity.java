@@ -25,6 +25,7 @@ import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Models.Aeroport;
 import bi.konstrictor.aacbflights.Models.Avion;
+import bi.konstrictor.aacbflights.Models.Compagnie;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.Models.Vol;
 import okhttp3.Call;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Vol> vols = new ArrayList<>();
     public ArrayList<Avion> avions = new ArrayList<>();
     public ArrayList<Aeroport> aeroports = new ArrayList<>();
+    public ArrayList<Compagnie> compagnies = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

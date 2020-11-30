@@ -19,12 +19,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterVol;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Filterable;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Models.Compagnie;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.R;
@@ -39,7 +42,7 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentVol extends Fragment {
+public class FragmentVol extends Fragment implements Filterable {
 
     public final MainActivity context;
     private SwipeRefreshLayout swipe_vol_refresh;
@@ -161,5 +164,9 @@ public class FragmentVol extends Fragment {
         vols.remove(vol);
         adaptateur.setVols(vols);
         adaptateur.notifyDataSetChanged();
+    }
+
+    @Override
+    public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
     }
 }

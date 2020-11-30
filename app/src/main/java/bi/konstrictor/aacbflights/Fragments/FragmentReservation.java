@@ -22,14 +22,17 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormReservation;
 import bi.konstrictor.aacbflights.Dialogs.FormVol;
+import bi.konstrictor.aacbflights.Filterable;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.LoginActivity;
 import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Models.Compagnie;
 import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.R;
 import okhttp3.Call;
@@ -41,7 +44,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class FragmentReservation extends Fragment{
+public class FragmentReservation extends Fragment implements Filterable {
 
     public MainActivity context;
     RecyclerView recycler_reservation;
@@ -156,10 +159,13 @@ public class FragmentReservation extends Fragment{
             }
         }
     }
-
     public void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
         adaptateur.setReservations(reservations);
         adaptateur.notifyDataSetChanged();
+    }
+
+    @Override
+    public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
     }
 }

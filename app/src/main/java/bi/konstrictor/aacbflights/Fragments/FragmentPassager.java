@@ -19,11 +19,14 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import bi.konstrictor.aacbflights.Adapters.AdapterPassager;
 import bi.konstrictor.aacbflights.Dialogs.FormPassager;
+import bi.konstrictor.aacbflights.Filterable;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
+import bi.konstrictor.aacbflights.Models.Compagnie;
 import bi.konstrictor.aacbflights.Models.Passager;
 import bi.konstrictor.aacbflights.R;
 import okhttp3.Call;
@@ -33,11 +36,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class FragmentPassager extends Fragment {
+public class FragmentPassager extends Fragment{
 
     public MainActivity context;
     private SwipeRefreshLayout swipe_passager_refresh;
