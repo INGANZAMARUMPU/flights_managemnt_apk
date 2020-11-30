@@ -40,16 +40,18 @@ import okhttp3.Response;
 
 public class FormFilter extends Dialog {
     private final Filterable filterable;
+    private final Boolean only_date;
     Spinner spinner_compagnie;
     DatePicker picker_date_debut, picker_date_fin;
     private Button btn_cancel, btn_submit;
     private MainActivity context;
 
-    public FormFilter(MainActivity context, Filterable filterable) {
+    public FormFilter(MainActivity context, Filterable filterable, Boolean only_date) {
         super(context, R.style.Theme_AppCompat_DayNight_Dialog);
         setContentView(R.layout.form_filtre);
         this.context = context;
         this.filterable = filterable;
+        this.only_date = only_date;
 
         spinner_compagnie = findViewById(R.id.spinner_compagnie);
         picker_date_debut = findViewById(R.id.picker_date_debut);
@@ -57,6 +59,8 @@ public class FormFilter extends Dialog {
 
         btn_cancel = findViewById(R.id.btn_cancel);
         btn_submit = findViewById(R.id.btn_submit);
+
+        if (only_date) spinner_compagnie.setVisibility(View.GONE);
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,10 @@ public class FormFilter extends Dialog {
     private void performFiltering() {
         Date debut = getDateFromPicker(picker_date_debut);
         Date fin = getDateFromPicker(picker_date_fin);
+        if(only_date){
+            filterable.performFiltering(debut, fin, null);
+            return;
+        }
         Compagnie compagnie = (Compagnie) spinner_compagnie.getSelectedItem();
         filterable.performFiltering(debut, fin, compagnie);
         dismiss();

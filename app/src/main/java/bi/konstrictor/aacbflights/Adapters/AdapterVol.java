@@ -60,6 +60,7 @@ public class AdapterVol extends RecyclerView.Adapter<AdapterVol.ViewHolder> {
 
     public void setVols(ArrayList<Vol> vols) {
         this.vols = vols;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

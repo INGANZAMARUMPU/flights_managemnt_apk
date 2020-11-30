@@ -89,7 +89,7 @@ public class FragmentReservation extends Fragment implements Filterable {
         } else if (id == R.id.menu_add) {
                 new FormReservation(this).show();
         } else if (id == R.id.menu_filter) {
-            new FormFilter(context, this).show();
+            new FormFilter(context, this, true).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -135,7 +135,6 @@ public class FragmentReservation extends Fragment implements Filterable {
                         reservations.add(res);
                     }
                     adaptateur.setReservations(reservations);
-                    adaptateur.notifyDataSetChanged();
 
                 } catch (Exception e) {
                     Log.i("==== HOST ====", e.getMessage());
@@ -147,7 +146,6 @@ public class FragmentReservation extends Fragment implements Filterable {
     public void pushReservation(Reservation res) {
         reservations.add(res);
         adaptateur.setReservations(reservations);
-        adaptateur.notifyDataSetChanged();
     }
 
     public void editReservation(Reservation res) {
@@ -155,7 +153,6 @@ public class FragmentReservation extends Fragment implements Filterable {
             if(reservations.get(i).id == res.id){
                 reservations.set(i, res);
                 adaptateur.setReservations(reservations);
-                adaptateur.notifyDataSetChanged();
                 return;
             }
         }
@@ -163,11 +160,16 @@ public class FragmentReservation extends Fragment implements Filterable {
     public void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
         adaptateur.setReservations(reservations);
-        adaptateur.notifyDataSetChanged();
     }
 
     @Override
     public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
-
+        ArrayList<Reservation> res = new ArrayList<>();
+        for(Reservation r : reservations){
+            if (r.depart.after(debut) & r.arrivee.before(fin)){
+                res.add(r);
+            }
+        }
+        adaptateur.setReservations(res);
     }
 }

@@ -57,6 +57,7 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
 
     public void setReservations(ArrayList<Reservation> reservations) {
         this.reservations = reservations;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

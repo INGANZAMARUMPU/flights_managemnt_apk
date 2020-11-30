@@ -29,6 +29,7 @@ import bi.konstrictor.aacbflights.Filterable;
 import bi.konstrictor.aacbflights.Host;
 import bi.konstrictor.aacbflights.MainActivity;
 import bi.konstrictor.aacbflights.Models.Compagnie;
+import bi.konstrictor.aacbflights.Models.Reservation;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.Models.Vol;
 import bi.konstrictor.aacbflights.R;
@@ -87,7 +88,7 @@ public class FragmentVol extends Fragment implements Filterable {
         } else if (id == R.id.menu_add) {
             new FormVol(this).show();
         } else if (id == R.id.menu_filter) {
-            new FormFilter(context, this).show();
+            new FormFilter(context, this, false).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,7 +137,6 @@ public class FragmentVol extends Fragment implements Filterable {
                     }
                     adaptateur.setVols(vols);
                     context.vols = vols;
-                    adaptateur.notifyDataSetChanged();
 
                 } catch (Exception e) {
                     Log.i("==== HOST ====", e.getMessage());
@@ -147,7 +147,6 @@ public class FragmentVol extends Fragment implements Filterable {
     public void pushVol(Vol res) {
         vols.add(res);
         adaptateur.setVols(vols);
-        adaptateur.notifyDataSetChanged();
     }
 
     public void editVol(Vol res) {
@@ -155,7 +154,6 @@ public class FragmentVol extends Fragment implements Filterable {
             if(vols.get(i).id == res.id){
                 vols.set(i, res);
                 adaptateur.setVols(vols);
-                adaptateur.notifyDataSetChanged();
                 return;
             }
         }
@@ -164,10 +162,25 @@ public class FragmentVol extends Fragment implements Filterable {
     public void removeVol(Vol vol) {
         vols.remove(vol);
         adaptateur.setVols(vols);
-        adaptateur.notifyDataSetChanged();
     }
 
     @Override
     public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
+        ArrayList<Vol> vs = new ArrayList<>();
+        if(compagnie.id.trim().isEmpty()) {
+            for (Vol v : vs) {
+                if (v.depart.after(debut) & v.arrivee.before(fin)) {
+                    vs.add(v);
+                }
+            }
+        } else {
+            for (Vol v : vs) {
+                if (v.depart.after(debut) & v.arrivee.before(fin)
+                        & v.compagnie.equals(compagnie.nom)) {
+                    vs.add(v);
+                }
+            }
+        }
+        adaptateur.setVols(vs);
     }
 }
