@@ -46,7 +46,7 @@ public class FormFilter extends Dialog {
     private Button btn_cancel, btn_submit;
     private MainActivity context;
 
-    public FormFilter(MainActivity context, Filterable filterable, Boolean only_date) {
+    public FormFilter(MainActivity context, final Filterable filterable, Boolean only_date) {
         super(context, R.style.Theme_AppCompat_DayNight_Dialog);
         setContentView(R.layout.form_filtre);
         this.context = context;
@@ -65,6 +65,7 @@ public class FormFilter extends Dialog {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                filterable.cancelFiltering();
                 dismiss();
             }
         });
@@ -72,6 +73,7 @@ public class FormFilter extends Dialog {
             @Override
             public void onClick(View v) {
                 performFiltering();
+                dismiss();
             }
         });
         fillSpinner();
@@ -85,7 +87,6 @@ public class FormFilter extends Dialog {
         }
         Compagnie compagnie = (Compagnie) spinner_compagnie.getSelectedItem();
         filterable.performFiltering(debut, fin, compagnie);
-        dismiss();
     }
     private void fillSpinner() {
         ArrayAdapter adapter_compagnie = new ArrayAdapter(

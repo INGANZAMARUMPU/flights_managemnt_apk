@@ -167,14 +167,14 @@ public class FragmentVol extends Fragment implements Filterable {
     @Override
     public void performFiltering(Date debut, Date fin, Compagnie compagnie) {
         ArrayList<Vol> vs = new ArrayList<>();
-        if(compagnie.id.trim().isEmpty()) {
-            for (Vol v : vs) {
+        if(compagnie.id.trim().equals("-1")) {
+            for (Vol v : vols) {
                 if (v.depart.after(debut) & v.arrivee.before(fin)) {
                     vs.add(v);
                 }
             }
         } else {
-            for (Vol v : vs) {
+            for (Vol v : vols) {
                 if (v.depart.after(debut) & v.arrivee.before(fin)
                         & v.compagnie.equals(compagnie.nom)) {
                     vs.add(v);
@@ -182,5 +182,10 @@ public class FragmentVol extends Fragment implements Filterable {
             }
         }
         adaptateur.setVols(vs);
+    }
+
+    @Override
+    public void cancelFiltering() {
+        adaptateur.setVols(vols);
     }
 }

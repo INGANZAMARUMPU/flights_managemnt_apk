@@ -172,4 +172,9 @@ public class FragmentReservation extends Fragment implements Filterable {
         }
         adaptateur.setReservations(res);
     }
+
+    @Override
+    public void cancelFiltering() {
+        adaptateur.setReservations(reservations);
+    }
 }

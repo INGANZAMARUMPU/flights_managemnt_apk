@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 String json = response.body().string();
                 try {
                     JSONArray json_array = new JSONArray(json);
-                    compagnies.add(new Compagnie("", "---------"));
+                    compagnies.add(new Compagnie("-1", "---------"));
                     for (int i=0; i<json_array.length(); i++){
                         JSONObject json_obj = json_array.getJSONObject(i);
                         Compagnie compagnie = new Compagnie(

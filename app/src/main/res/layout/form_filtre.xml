@@ -59,7 +59,7 @@
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ignorer"
+            android:text="initialiser"
             android:textColor="#777"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
         <Button
